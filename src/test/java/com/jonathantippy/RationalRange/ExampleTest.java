@@ -1,4 +1,4 @@
-package com.jonathantippy.RationalRange;
+package com.jonathantippy.AccurateGraphs;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
