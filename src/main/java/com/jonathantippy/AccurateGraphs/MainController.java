@@ -55,6 +55,8 @@ public class MainController {
             gc.fillRect(i, 0, 4, chartHeight);
         }
 
+        // fillRect uses x, y pos and x, y size
+
         /*for (int i=0; i<chartWidth;i++) {
             if (i%2==0) {
                 gc.fillRect(0, i, 0, chartHeight);
