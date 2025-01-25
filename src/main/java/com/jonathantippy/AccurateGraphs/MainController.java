@@ -49,11 +49,17 @@ public class MainController {
         gc.setFill(Color.RED);
         gc.fillRect(0, 0, chartWidth, chartHeight);
 
-        gc.setFill(Color.GREEN);
-
-        for (int i=0; i<chartWidth;i+=8) {
-            gc.fillRect(i, 0, 4, chartHeight);
+        gc.setStroke(Color.GREEN);
+        gc.setLineWidth(2.0);
+        for (int i=0; i<chartWidth; i+=4) {
+            gc.strokeLine(i + 0.5, 0.0, i + 0.5, chartHeight);
         }
+
+        //gc.setFill(Color.GREEN);
+
+        /*for (int i=0; i<chartWidth;i+=8) {
+            gc.fillRect(i, 0, 4, chartHeight);
+        }*/
 
         // fillRect uses x, y pos and x, y size
 
@@ -63,13 +69,12 @@ public class MainController {
             }
 
         }*/
-
-
-
+        /*
         gc.setFill(Color.GREEN);
         gc.setStroke(Color.BLUE);
         gc.fillRect(50, 50, 200, 100);
         gc.strokeRect(50, 50, 200, 100);
+        */
     }
 
 }
