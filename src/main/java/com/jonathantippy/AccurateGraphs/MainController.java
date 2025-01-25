@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.canvas.GraphicsContext;
+
+
 
 public class MainController {
 
@@ -38,6 +41,33 @@ public class MainController {
         assert x3 != null : "fx:id=\"x3\" was not injected: check your FXML file 'main.fxml'.";
         assert x4 != null : "fx:id=\"x4\" was not injected: check your FXML file 'main.fxml'.";
 
+        double chartWidth = chart.getWidth();
+        double chartHeight = chart.getHeight();
+
+        GraphicsContext gc = chart.getGraphicsContext2D();
+
+        gc.setFill(Color.RED);
+        gc.fillRect(0, 0, chartWidth, chartHeight);
+
+        gc.setFill(Color.GREEN);
+
+        for (int i=0; i<chartWidth;i+=8) {
+            gc.fillRect(i, 0, 4, chartHeight);
+        }
+
+        /*for (int i=0; i<chartWidth;i++) {
+            if (i%2==0) {
+                gc.fillRect(0, i, 0, chartHeight);
+            }
+
+        }*/
+
+
+
+        gc.setFill(Color.GREEN);
+        gc.setStroke(Color.BLUE);
+        gc.fillRect(50, 50, 200, 100);
+        gc.strokeRect(50, 50, 200, 100);
     }
 
 }
