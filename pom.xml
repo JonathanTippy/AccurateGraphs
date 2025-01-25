@@ -64,6 +64,11 @@
 			<artifactId>math-evaluator</artifactId>
 			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
+        <dependency>
+			<groupId>com.jonathantippy.RationalRange</groupId>
+			<artifactId>rational-range</artifactId>
+			<version>0.0.3-SNAPSHOT</version>
+		</dependency>
 
         <!-- JUnit -->
         <dependency>

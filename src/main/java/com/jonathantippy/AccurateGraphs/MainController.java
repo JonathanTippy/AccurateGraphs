@@ -4,13 +4,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Slider;
+import javafx.scene.input.DragEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.canvas.GraphicsContext;
+//import com.jonathantippy.RationalRange;
 
 
 
 public class MainController {
+
+    @FXML
+    private Slider factorSelector;
 
     @FXML
     private ResourceBundle resources;
@@ -33,6 +39,7 @@ public class MainController {
     @FXML
     private Color x4;
 
+    
     @FXML
     void initialize() {
         assert chart != null : "fx:id=\"chart\" was not injected: check your FXML file 'main.fxml'.";
@@ -41,40 +48,35 @@ public class MainController {
         assert x3 != null : "fx:id=\"x3\" was not injected: check your FXML file 'main.fxml'.";
         assert x4 != null : "fx:id=\"x4\" was not injected: check your FXML file 'main.fxml'.";
 
+        factorSelector.setMin(0);
+        factorSelector.setMax(10);
+        factorSelector.setValue(1);
+    }
+
+    @FXML
+    void render() {
+        double factor = factorSelector.getValue();
+
+        double[] position = {0.0, 0.0};
+        double zoomFactor = 1;
+
         double chartWidth = chart.getWidth();
         double chartHeight = chart.getHeight();
 
         GraphicsContext gc = chart.getGraphicsContext2D();
 
-        gc.setFill(Color.RED);
-        gc.fillRect(0, 0, chartWidth, chartHeight);
+        gc.setStroke(Color.BLACK);
+        gc.setLineWidth(1.0);
+        
+        for (int pixel=0; pixel<chartWidth; pixel++) {
 
-        gc.setStroke(Color.GREEN);
-        gc.setLineWidth(2.0);
-        for (int i=0; i<chartWidth; i+=4) {
+            double pixelWidth = 1/(zoomFactor*chartWidth);
+            double lowerBound = pixel / zoomFactor
+            double upperBound = pixel / zoomFactor
+
+
             gc.strokeLine(i + 0.5, 0.0, i + 0.5, chartHeight);
         }
-
-        //gc.setFill(Color.GREEN);
-
-        /*for (int i=0; i<chartWidth;i+=8) {
-            gc.fillRect(i, 0, 4, chartHeight);
-        }*/
-
-        // fillRect uses x, y pos and x, y size
-
-        /*for (int i=0; i<chartWidth;i++) {
-            if (i%2==0) {
-                gc.fillRect(0, i, 0, chartHeight);
-            }
-
-        }*/
-        /*
-        gc.setFill(Color.GREEN);
-        gc.setStroke(Color.BLUE);
-        gc.fillRect(50, 50, 200, 100);
-        gc.strokeRect(50, 50, 200, 100);
-        */
     }
 
 }
