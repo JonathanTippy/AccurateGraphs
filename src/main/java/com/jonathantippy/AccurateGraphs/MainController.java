@@ -51,8 +51,8 @@ public class MainController {
         assert x4 != null : "fx:id=\"x4\" was not injected: check your FXML file 'main.fxml'.";
 
         factorSelector.setMin(0);
-        factorSelector.setMax(10);
-        factorSelector.setValue(1);
+        factorSelector.setMax(3.141592653589793238/2);
+        factorSelector.setValue(3.141592653589793238/4);
 
         renderLoop();
     }
@@ -69,7 +69,7 @@ public class MainController {
 
         
 
-        double factor = factorSelector.getValue();
+        double factor = Math.tan(factorSelector.getValue());
 
         double[] screenOffset = {1/2,1/2};
 
@@ -97,20 +97,18 @@ public class MainController {
             double lowerAnswerPixel = lowerAnswer * chartWidth;
             double upperAnswerPixel = upperAnswer * chartWidth;
 
-            double lineDensity = pixelWidth/(upperAnswer-lowerAnswer);
-            
-            int color;
-            
-            if (lineDensity<1) {
-                color = (int) (lineDensity * 255);
-            } else {
-                color = 255;
-            }
+            double rangeSize = Math.max(upperAnswer-lowerAnswer, pixelWidth);
+               
 
-            color = 255 - color; // must invert for black
+            double lineDensity = pixelWidth/rangeSize;
+            System.out.println("line density: " + lineDensity); 
             
+            int shade;
 
-            gc.setStroke(Color.rgb(color, color, color));
+            shade = (int) (255 - (lineDensity * 255));
+            System.out.println("shade: " + shade);            
+
+            gc.setStroke(Color.rgb(shade, shade, shade));
 
             gc.strokeLine(pixel + 0.5, lowerAnswerPixel + 0.5, pixel + 0.5, upperAnswerPixel+0.5);
         }
