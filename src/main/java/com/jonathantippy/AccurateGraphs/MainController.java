@@ -9,6 +9,8 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.application.Platform;
+
 //import com.jonathantippy.RationalRange;
 
 
@@ -51,18 +53,34 @@ public class MainController {
         factorSelector.setMin(0);
         factorSelector.setMax(10);
         factorSelector.setValue(1);
+
+        renderLoop();
     }
 
     @FXML
+    void renderLoop() {
+        render();
+        Platform.runLater(() -> renderLoop());
+    }
+
+
+    @FXML
     void render() {
+
+        
+
         double factor = factorSelector.getValue();
 
-        double[] position = {0.0, 0.0};
+        double[] screenOffset = {1/2,1/2};
 
         double chartWidth = chart.getWidth();
         double chartHeight = chart.getHeight();
 
         GraphicsContext gc = chart.getGraphicsContext2D();
+
+        gc.setFill(Color.WHITE);
+        gc.fillRect(0, 0, chartWidth, chartHeight);
+
 
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(1.0);
@@ -78,6 +96,21 @@ public class MainController {
 
             double lowerAnswerPixel = lowerAnswer * chartWidth;
             double upperAnswerPixel = upperAnswer * chartWidth;
+
+            double lineDensity = pixelWidth/(upperAnswer-lowerAnswer);
+            
+            int color;
+            
+            if (lineDensity<1) {
+                color = (int) (lineDensity * 255);
+            } else {
+                color = 255;
+            }
+
+            color = 255 - color; // must invert for black
+            
+
+            gc.setStroke(Color.rgb(color, color, color));
 
             gc.strokeLine(pixel + 0.5, lowerAnswerPixel + 0.5, pixel + 0.5, upperAnswerPixel+0.5);
         }
