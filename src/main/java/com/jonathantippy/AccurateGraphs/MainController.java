@@ -58,7 +58,6 @@ public class MainController {
         double factor = factorSelector.getValue();
 
         double[] position = {0.0, 0.0};
-        double zoomFactor = 1;
 
         double chartWidth = chart.getWidth();
         double chartHeight = chart.getHeight();
@@ -70,12 +69,17 @@ public class MainController {
         
         for (int pixel=0; pixel<chartWidth; pixel++) {
 
-            double pixelWidth = 1/(zoomFactor*chartWidth);
-            double lowerBound = pixel / zoomFactor
-            double upperBound = pixel / zoomFactor
+            double pixelWidth = 1 / chartWidth;
+            double lowerBound = pixel * pixelWidth;
+            double upperBound = (pixel + 1) * pixelWidth;
 
+            double lowerAnswer = lowerBound * factor;
+            double upperAnswer = upperBound * factor;
 
-            gc.strokeLine(i + 0.5, 0.0, i + 0.5, chartHeight);
+            double lowerAnswerPixel = lowerAnswer * chartWidth;
+            double upperAnswerPixel = upperAnswer * chartWidth;
+
+            gc.strokeLine(pixel + 0.5, lowerAnswerPixel + 0.5, pixel + 0.5, upperAnswerPixel+0.5);
         }
     }
 
