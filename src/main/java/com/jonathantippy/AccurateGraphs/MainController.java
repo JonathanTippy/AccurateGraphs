@@ -10,8 +10,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.application.Platform;
+import com.jonathantippy.RationalRange.RationalRange;
+import com.jonathantippy.MathEvaluator.Evaluator;
 
-//import com.jonathantippy.RationalRange;
 
 
 

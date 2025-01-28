@@ -4,7 +4,7 @@
 
     <!-- Project Deets -->
     <groupId>com.jonathantippy</groupId>
-    <artifactId>AccurateGraphs</artifactId>
+    <artifactId>accurate-graphs</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Accurate Graphs</name>
     <description>(WIP) Graphing calculator extraordinare</description>
@@ -60,14 +60,14 @@
         </dependency>
         <!-- Stuff -->
         <dependency>
-			<groupId>com.jonathantippy.MathEvaluator</groupId>
+			<groupId>com.jonathantippy</groupId>
 			<artifactId>math-evaluator</artifactId>
 			<version>0.0.2-SNAPSHOT</version>
 		</dependency>
         <dependency>
-			<groupId>com.jonathantippy.RationalRange</groupId>
-			<artifactId>rational-range</artifactId>
-			<version>0.0.3-SNAPSHOT</version>
+			<groupId>com.jonathantippy</groupId>
+            <artifactId>rational-range</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
 		</dependency>
 
         <!-- JUnit -->
