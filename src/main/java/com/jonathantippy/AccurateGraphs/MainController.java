@@ -20,6 +20,8 @@ public class MainController {
 
     @FXML
     private Slider factorSelector;
+    @FXML
+    private Slider sliderTwo;
 
     @FXML
     private ResourceBundle resources;
@@ -55,6 +57,7 @@ public class MainController {
         factorSelector.setMax(3.141592653589793238/2);
         factorSelector.setValue(3.141592653589793238/4);
 
+
         renderLoop();
     }
 
@@ -86,17 +89,19 @@ public class MainController {
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(1.0);
         
-        for (int pixel=0; pixel<chartWidth; pixel++) {
+        for (int pixel= 0; pixel<chartWidth; pixel++) {
+
+            int virtualPixel = pixel -(int) (chartWidth/2);
 
             double pixelWidth = 1 / chartWidth;
-            double lowerBound = pixel * pixelWidth;
-            double upperBound = (pixel + 1) * pixelWidth;
+            double lowerBound = virtualPixel * pixelWidth;
+            double upperBound = (virtualPixel + 1) * pixelWidth;
 
-            double lowerAnswer = lowerBound * factor;
-            double upperAnswer = upperBound * factor;
+            double upperAnswer = -(lowerBound * factor);
+            double lowerAnswer = -(upperBound * factor);
 
-            double lowerAnswerPixel = lowerAnswer * chartWidth;
-            double upperAnswerPixel = upperAnswer * chartWidth;
+            double lowerAnswerPixel = lowerAnswer * chartWidth + chartHeight/2;
+            double upperAnswerPixel = upperAnswer * chartWidth + chartHeight/2;
 
             double rangeSize = Math.max(upperAnswer-lowerAnswer, pixelWidth);
                
