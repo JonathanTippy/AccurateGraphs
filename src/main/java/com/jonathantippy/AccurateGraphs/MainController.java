@@ -112,8 +112,11 @@ public class MainController {
             int shade;
 
             shade = (int) (255 - (lineDensity * 255));
-            System.out.println("shade: " + shade);            
-
+            System.out.println("shade: " + shade);     
+            /*if (shade!=255) {
+                shade = 0;   
+            }*/
+            
             gc.setStroke(Color.rgb(shade, shade, shade));
 
             gc.strokeLine(pixel + 0.5, lowerAnswerPixel + 0.5, pixel + 0.5, upperAnswerPixel+0.5);

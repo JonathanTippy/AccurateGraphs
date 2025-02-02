@@ -104,9 +104,9 @@
               </textFill>
             </Label>
                   <ScrollBar layoutX="214.0" layoutY="1.0" orientation="VERTICAL" prefHeight="550.0" prefWidth="15.0" />
-                  <Slider fx:id="factorSelector" layoutX="45.0" layoutY="17.0" minorTickCount="1" onDragDropped="#renderLoop" onDragOver="#render" onMouseDragOver="#render" onMouseDragReleased="#render" showTickLabels="true" showTickMarks="true" />
+                  <Slider fx:id="factorSelector" layoutX="45.0" layoutY="16.0" majorTickUnit="50.0" minorTickCount="1" onDragDropped="#renderLoop" onDragOver="#render" onMouseDragOver="#render" onMouseDragReleased="#render" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
                   <Button layoutY="526.0" mnemonicParsing="false" onAction="#renderLoop" text="Render" />
-                  <Slider fx:id="sliderTwo" layoutX="45.0" layoutY="55.0" minorTickCount="1" onDragDropped="#renderLoop" onDragOver="#render" onMouseDragOver="#render" onMouseDragReleased="#render" showTickLabels="true" showTickMarks="true" />
+                  <Slider fx:id="timeSlider" layoutX="45.0" layoutY="55.0" minorTickCount="1" onDragDropped="#renderLoop" onDragOver="#render" onMouseDragOver="#render" onMouseDragReleased="#render" showTickLabels="true" showTickMarks="true" />
           </children>
         </AnchorPane>
       <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
